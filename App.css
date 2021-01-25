@@ -1,0 +1,43 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.outer_list{
+  height: 35rem;
+    width: 39rem;
+    background-color: blue;
+    margin: 90px 334px;
+    overflow: hidden;
+}
+.all{
+  float: left;
+} 
+.search{
+float: right;
+}
+.header{
+  width: 35rem;
+    margin: 0px 0px 0 40px;
+    height: 48px;
+    line-height: 30px;
+}
+.contact_list{
+  height: 79px;
+    background-color: #efe6e6;
+    margin: 10px;
+    width: 86%;
+    margin-left: 8%!important;
+}
+/* .pic{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-top: 14px;
+   background-color: red; 
+  position: absolute;
+} */
+.pic img{
+  border-radius: 50%;
+    height: 53px;
+}
