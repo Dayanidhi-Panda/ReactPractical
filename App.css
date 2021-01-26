@@ -3,6 +3,16 @@
   padding: 0;
   box-sizing: border-box;
 }
+ul{
+  position: absolute;
+    z-index: 99999;
+    left: 21rem;
+}
+li {
+  list-style: none;
+  background: white;
+  border: 1px solid black;
+}
 .outer_list{
   height: 35rem;
     width: 39rem;
@@ -13,8 +23,12 @@
 .all{
   float: left;
 } 
+.dropdown{
+  width: 40%!important;
+}
 .search{
 float: right;
+margin-top: -32px
 }
 .header{
   width: 35rem;
