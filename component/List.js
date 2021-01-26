@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import Contact from './Contact';
 //import Details from './Details';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee} from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown} from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
 //function List() {
@@ -50,7 +50,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
         <div>
             <div className="outer_list">
                 <div className="header">
-                    <span className="all">All<FontAwesomeIcon icon={faCoffee} /></span>
+                    <span className="all">All<FontAwesomeIcon icon={faCaretDown} /></span>
                     <span className="search">
                     <input type="text" placeholder="search"
                         onChange={this.onSearchChange} />
