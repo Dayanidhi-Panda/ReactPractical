@@ -38,50 +38,18 @@ export class Contact extends React.Component {
     constructor() {
         super()
 
-        this.state = {
-            users: null,
-            orginalUsers: null,
-            matchdetails: ''
-        }
-    }
-
-    componentDidMount() {
-        fetch('https://reqres.in/api/users').then((resp) => {
-            resp.json().then((res) => {
-                console.log(res);
-                this.setState({ users: res.data })
-                this.setState({ orginalUsers: res.data })
-            })
-        })
-    }
-    
-    onSearchChange = (event) => {
-        let input = event.target.value;
-
-        if (input === '') {
-            this.setState({ users: this.state.orginalUsers });
-        }
         
-        var result = this.state.orginalUsers.filter(item => item.first_name.toLowerCase().includes(input));
-
-        this.setState({ users: result });
-        // console.log(event.target.value);
     }
 
 
     render() {
-        console.log(this.state.matchdetails);
+       // console.log(this.state.matchdetails);
         return (
 
             <div>
-                <span className="search">
-                    <input type="text" placeholder="search"
-                        onChange={this.onSearchChange} />
-                </span>
-
                 {
-                    this.state.users ?
-                        this.state.users.map((e) =>
+                    this.props.data ?
+                        this.props.data.map((e) =>
                             <div className="contact_list row">
                                 <div className="col-md-3 avatar">
                                     <div className="pic" key={e.id}><img src={e.avatar}></img>
@@ -106,4 +74,5 @@ export class Contact extends React.Component {
 }
 
 export default Contact
+
 
