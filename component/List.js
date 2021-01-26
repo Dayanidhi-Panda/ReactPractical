@@ -9,23 +9,41 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 //function List() {
     export class List extends React.Component{
 
-        constructor(props){
-            super(props)
-            this.state={
-                searchData:null
+        constructor(){
+            super()
+            
+            this.state = {
+                users: null,
+                orginalUsers: null,
+                matchdetails: ''
             }
         }
-        
-        search(key){
-             fetch('https://reqres.in/api/users'+ key).then((srch)=>{
-                srch.json().then((res)=>{
-                    // console.log("res",res);
-                     this.setState({searchData:res});
-                     
-                 })
-             })    
+    
+        componentDidMount() {
+            fetch('https://reqres.in/api/users').then((resp) => {
+                resp.json().then((res) => {
+                    console.log(res);
+                    this.setState({ users: res.data })
+                    this.setState({ orginalUsers: res.data })
+                })
+            })
         }
-        
+    
+        onSearchChange = (event) => {
+            let input = event.target.value;
+    
+            if (input === '') {
+                this.setState({ users: this.state.users });
+            }
+            
+            var result = this.state.orginalUsers.filter(item => item.first_name.toLowerCase().includes(input));
+            var result1 = this.state.orginalUsers.filter(item => item.last_name.toLowerCase().includes(input));
+            var result2 = this.state.orginalUsers.filter(item => item.email.toLowerCase().includes(input));
+            this.setState({ users: result });
+            this.setState({ users: result1 });
+            this.setState({ users: result2 });
+          
+        }
 
     render(){
     return (
@@ -34,21 +52,12 @@ import { library } from "@fortawesome/fontawesome-svg-core";
                 <div className="header">
                     <span className="all">All<FontAwesomeIcon icon={faCoffee} /></span>
                     <span className="search">
-                        <input type="search" placeholder="search" onChange={(e)=>this.search(e.target.value)} />
-                        <div>
-                            {
-                                this.state.searchData ?
-                                    this.state.searchdata.map((item)=>
-                                    <div>{item.first_name}</div>
-                                    )
-                                :""
-                            }
-                        </div>
-                    </span>
-                    
+                    <input type="text" placeholder="search"
+                        onChange={this.onSearchChange} />
+                </span>
                 </div>
-                <Contact />
-                {/* <Details /> */}
+                <Contact data={this.state.users}/>
+                
             </div>
            
         </div>
